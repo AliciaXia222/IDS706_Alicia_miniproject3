@@ -1,19 +1,21 @@
 [![CI](https://github.com/AliciaXia222/IDS_706_miniproject_1/actions/workflows/cicd.yml/badge.svg)](https://github.com/AliciaXia222/IDS_706_miniproject_1/actions/workflows/cicd.yml)
 
-# IDS_706_miniproject_2-Country Population Growth
+# IDS_706_miniproject_3-Country Population Growth
 ## Prepare develope environment
     * Log in to github 
     * Going into project1 to use template
     * luanch Codespace
     * wait for setting up environment
     * Test on Makefile to use make format, make lint, make test to make sure code format follow the rule.
-![Screenshot 2023-09-09 201323](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/eb3ca2a4-0309-46ac-976d-863a9ed3c16c)
 
-![Screenshot 2023-09-09 201449](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/08b1f872-ef59-4a3e-a44c-efff2b411a79)
+<img width="1405" alt="Screenshot 2023-09-17 at 5 05 55 PM" src="https://github.com/nogibjj/IDS706_Alicia_miniproject3/assets/143651934/b94659af-4b49-40a8-88a2-40178ae03f27">
+<img width="1405" alt="Screenshot 2023-09-17 at 5 05 35 PM" src="https://github.com/nogibjj/IDS706_Alicia_miniproject3/assets/143651934/ac5b1325-be8e-479a-9cc7-3f453352f414">
 
 ## Purpose
 
-* This repo is to apply basic EDA on a Country Population Growth Data and plot the mean, median, Standard Deviation of the Growth% through 63 years.
+* This repo is to translate the project 2's code with Pandas package into Polars
+* Apply basic EDA on a Country Population Growth Data 
+* Plot the Histogram of Growth% in year 2022
 
 ## Descriptive statistics:
 
@@ -22,28 +24,20 @@
     * 63 columns of numerical data
     * no data points under 1960 year variable
     * except 1960 column, there are non-null in other columns
+* This time only pulled recent 4 years to do the summary, the picture as follow
 
-![Screenshot 2023-09-09 201900](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/c6c416a5-1ff2-40e8-a859-8a17962efd23)
-
-## Summary Statistics:
-
-* Because of 1960 has no data, so there is no statistcis summary
-* There are 64 years data, so only made a screenshot for first 8 yeras started from 1960
-
-![Screenshot 2023-09-09 202958](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/2086e8c3-7996-455c-82e7-841f4ee05b20)
+<img width="524" alt="Screenshot 2023-09-17 at 5 07 26 PM" src="https://github.com/nogibjj/IDS706_Alicia_miniproject3/assets/143651934/a5392b17-84bb-4caf-abb5-0e31f8f4908a">
 
 ## Data Viz:
 
-* Below is Mean, Median, Standard Deviation of 266 countries population growth plot across 63 years.
+* Below is histogram of 2022 years world population growth plot, the data points mostly concentrate around 1.25% which means the population in each country more likely increased in 2022.
 
-![Screenshot 2023-09-09 203331](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/4fd4ae3c-b538-48e0-a494-e990eb0f2a62)
+<img width="737" alt="Screenshot 2023-09-17 at 5 07 16 PM" src="https://github.com/nogibjj/IDS706_Alicia_miniproject3/assets/143651934/fc7efa25-7750-41be-9c63-36e8f3ce2a0f">
 
 ## Python Script:
 
-![Screenshot 2023-09-09 203559](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/6b74d322-df10-4b61-b98a-2edb5d264dfc)
-
-![Screenshot 2023-09-09 203640](https://github.com/nogibjj/IDS706_Alicia_miniproject2/assets/143651934/1b92908d-38ad-43e0-970b-e6f333d22c7b)
+<img width="626" alt="Screenshot 2023-09-17 at 5 22 11 PM" src="https://github.com/nogibjj/IDS706_Alicia_miniproject3/assets/143651934/d8c7565e-cc13-4655-b929-fb9a55192443">
 
 ## Generated summary report:
 
-* Please see "profile.pdf"
+* Please see "project3 report.pdf"
