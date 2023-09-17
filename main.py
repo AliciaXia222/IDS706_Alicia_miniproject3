@@ -11,9 +11,7 @@ from ydata_profiling import ProfileReport
 def stats_population(csv):
     # read csv file in polars
     population = pl.scan_csv(csv).fetch()
-    
     population_stats = population.describe()
-    ''' only work on population.csv dataset '''
     return population_stats[
         ["describe", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]
     ]
@@ -36,9 +34,9 @@ def viz_population(csv):
 # so we need to convert it to pandas dataframe
 def report_population():
     population2 = pd.read_csv("population.csv")
-    population_report = population2.loc[0:8, ["Country Name", "2022"]]
+    population_df= population2.loc[0:8, ["Country Name", "2022"]]
     profile = ProfileReport(
-        population_report, title="Country Population Report", explorative=True
+        population_df, title="Country Population Report", explorative=True
     )
     profile.to_file("data_profiling_report.html")
     return profile
