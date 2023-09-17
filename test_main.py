@@ -4,27 +4,28 @@ Test goes here
 """
 
 
-from main import rows, columns
 from main import (
+    stats_population,
+    viz_population,
     report_population,
-    generate_summary,
 )
 import pandas as pd
+import polars as pl
 
-example_csv = "https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-age/congress-terms.csv"
+
+def test_stats_population():
+    df = stats_population("population.csv")
+    assert df.shape == (9, 9)
 
 
-def test_generate_summary_report():
-    """Function calling generate_summary() and generate_summary_iris()"""
-    generate_summary(example_csv)
+def test_report_population():
     report_population()
+
+
+def test_viz_population():
+    viz_population("population.csv")
 
 
 if __name__ == "__main__":
 
     test_main()
-
-
-def test_main():
-    assert rows == 266
-    assert columns == 67

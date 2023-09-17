@@ -1,56 +1,42 @@
 """
 Main cli or app entry point
 """
+
+import polars as pl
 import pandas as pd
 import matplotlib.pyplot as plt
 from ydata_profiling import ProfileReport
 
+# Define a funstion to read csv file and generate statistical description. Specific for population.csv
+def stats_population(csv):
+    # read csv file in polars
+    population = pl.scan_csv(csv).fetch()
+    # statistical description of the dataset
+    population_stats = population.describe()
+    return population_stats[
+        ["describe", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]
+    ]
 
-# Read the uploaded csv file: population.csv
-population = pd.read_csv("population.csv")
 
-
-# Calculate the descriptive statistics
-rows = population.shape[0]
-columns = population.shape[1]
-
-# plot Mean, Median, Standard Deviation of 65 years population all over the world.
-def viz_population():
-    summary_stats = {
-        "Mean": population[["2018", "2019", "2020", "2021", "2022"]].mean(),
-        "Median": population[["2018", "2019", "2020", "2021", "2022"]].median(),
-        "Std Dev": population[["2018", "2019", "2020", "2021", "2022"]].std(),
-    }
-    plt.figure(figsize=(8, 6))
-    plt.plot(summary_stats["Mean"].index, summary_stats["Mean"].values, label="Mean")
-    plt.plot(
-        summary_stats["Median"].index, summary_stats["Median"].values, label="Median"
-    )
-    plt.plot(
-        summary_stats["Std Dev"].index, summary_stats["Std Dev"].values, label="Std Dev"
-    )
-    plt.xlabel("Statistics")
-    plt.ylabel("Values")
-    plt.title("Summary Statistics")
-    plt.legend()
-    plt.tight_layout()
+# Polars viz
+def viz_population(csv):
+    """generate example visualization of the polulation dataset"""
+    pd.set_option("display.max_columns", None)
+    polars_df = pl.read_csv(csv)
+    plt.figure(figsize=(10, 6))
+    plt.hist(polars_df["2022"], bins=20, edgecolor="black")
+    plt.title("2022 population growth")
+    plt.xlabel("population")
+    plt.ylabel("Frequency")
     plt.show()
 
 
-# generate a analyse report
+# generate a analyse report using polats dataframe
 def report_population():
     population2 = pd.read_csv("population.csv")
-    population_report = population2.loc[
-        0:10, ["Country Name", "2018", "2019", "2020", "2021", "2022"]
-    ]
+    population_report = population2.loc[0:8, ["Country Name", "2022"]]
     profile = ProfileReport(
         population_report, title="Country Population Report", explorative=True
     )
     profile.to_file("data_profiling_report.html")
-
-
-def generate_summary(csv):
-    """generates report of any dataset"""
-    general_df = pd.read_csv(csv)
-    profile = ProfileReport(general_df, title="Profiling Report")
-    profile.to_file("profile.html")
+    return profile
