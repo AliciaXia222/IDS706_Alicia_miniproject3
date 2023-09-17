@@ -13,6 +13,6 @@ uvicorn==0.18.3
 
 # add pandas, matplpotlib, and sklearn 
 pandas
-scikit-learn
-matplotlib
-ydata_profiling
+matplotlib==3.8.0
+tabulate
+pyarrow
